@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Path, HTTPException, status
-from model   import Todo, TodoItem
+from model   import Todo, TodoItem, TodoItems
 
 todo_router = APIRouter(tags=["Todo"])
 
@@ -13,7 +13,7 @@ async def add_todo(todo:Todo):
     todo_list.append(todo)
     return {"message" : "To Add Successfully"}
 
-@todo_router.get("/todo")
+@todo_router.get("/todo",response_model=TodoItems)
 async def retrieve_todos():
     return {"todos": todo_list}
 
