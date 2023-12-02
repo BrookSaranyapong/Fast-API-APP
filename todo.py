@@ -5,7 +5,7 @@ todo_router = APIRouter(tags=["Todo"])
 
 todo_list = []
 
-@todo_router.post("/todo")
+@todo_router.post("/todo",status_code=201)
 async def add_todo(todo:Todo):
     for todo_data in todo_list:
         if todo_data.id == todo.id:
